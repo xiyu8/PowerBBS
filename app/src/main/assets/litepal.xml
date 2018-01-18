@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+    <dbname value="PowerBBS" ></dbname>
+
+    <version value="0" ></version>
+
+    <list>
+        <!--这里是类映射：由   Java的Bean->数据库的table    -->
+    </list>
+</litepal>
