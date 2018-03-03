@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">PowerBBS</string>
+    <!--sharedPerformensKey-->
+    <string name="FirstLauch">FirstLauch</string>
+
+    <string name="app_url">http://192.168.191.1/www/PowerBBS/</string>
 </resources>

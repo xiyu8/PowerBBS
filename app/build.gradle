@@ -20,10 +20,36 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //新版本Studio基本库和添加的库
     implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    //support和MaterailDesign库，版本要统一
+    compile 'com.android.support:support-v4:26.1.0'
+    compile 'com.android.support:recyclerview-v7:26.1.0'
+    compile 'com.android.support:design:26.1.0'
+    compile 'com.android.support:cardview-v7:26.1.0'
+
+
+
+    /* 其它第三方库 */
     implementation 'org.litepal.android:core:1.5.0'
+    //网络相关库：Okhttp、retrofit\glide\rxjava
+    compile 'com.squareup.okhttp3:okhttp:3.7.0'
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'jp.wasabeef:glide-transformations:2.0.2'
+    //gson、jsoup
+    compile 'com.google.code.gson:gson:2.8.0'
+    compile 'org.jsoup:jsoup:1.10.2'
+    //UI库
+    compile 'com.github.wangjiegulu:AndroidInject:1.0.6' //注解框架(CommunicationMainAct用到)
+    compile 'com.github.wangjiegulu:AndroidBucket:1.0.4' //基础工具包
+    compile 'com.github.wangjiegulu:RapidFloatingActionButton:1.0.3'
+
+
 }

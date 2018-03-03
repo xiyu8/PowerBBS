@@ -19,13 +19,17 @@ public class ActivityCollector {
         activities.remove(activity);
     }
 
-    public static void finishAll() {
+    public static void finishAll() { //finish()所有activity、清除容器、杀掉进程
+
         for (Activity activity : activities) {
             if (!activity.isFinishing()) {
                 activity.finish();
             }
         }
+
         activities.clear();
+        android.os.Process.killProcess(android.os.Process.myPid());
+
     }
 
 }
