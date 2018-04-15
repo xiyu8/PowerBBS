@@ -22,6 +22,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="VI1Z0pK2bxI88IOG0N7zG2CAHpa8y9Be" />
+        <!-- 百度定位服务 -->
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" />
 
         <activity android:name=".splash.SplashActivity">
             <intent-filter>

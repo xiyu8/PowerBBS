@@ -1,0 +1,153 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.powerbbs.home.main_fragment.GroupFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/hello_blank_fragment" />
+    <com.baidu.mapapi.map.MapView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.baidu.mapapi.map.MapView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <!--title area-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="#ccc"
+            android:orientation="horizontal"
+            android:layout_height="50dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="35dp"
+                    android:layout_height="50dp"
+                    android:background="#fff"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:id="@+id/aboutGroupArea"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="right">
+                <EditText
+                    android:id="@+id/group_name"
+                    android:layout_width="210dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#dddddd"
+                    android:textColorHint="#45848e"
+                    android:hint="键入小分队口令"/>
+                <TextView
+                    android:id="@+id/joinGroup"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#fff"
+                    android:text="加入"/>
+                <TextView
+                    android:id="@+id/creatGroup"
+                    android:layout_width="50dp"
+                    android:textColor="#fff"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="创建"/>
+
+
+            </LinearLayout>
+        </LinearLayout>
+        <!--group content area(except title)-->
+        <android.support.percent.PercentRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+
+            <!--地图上 第一层覆盖：searchButton-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="right">
+                <Button
+                    android:id="@+id/hideChatArea"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#30000000"
+                    android:textColor="#fff"
+                    android:text="隐藏"
+                    android:textSize="22sp"/>
+            </LinearLayout>
+            <!--地图上的第二层覆盖：send chat message-->
+            <LinearLayout
+                android:layout_marginTop="60dp"
+                android:id="@+id/chatArea"
+                android:orientation="vertical"
+                android:layout_width="280dp"
+                android:layout_marginLeft="105dp"
+                android:layout_height="match_parent">
+                <!--message content area:The message will be innered in this linearlayout-->
+                <LinearLayout
+                    android:id="@+id/chatItemArea"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+                </LinearLayout>
+
+
+                <!--commit comment part-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="right">
+                    <RelativeLayout
+                        android:layout_width="280dp"
+                        android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:background="#50b6dae3"
+                        android:focusableInTouchMode="true"
+                        android:padding="6dp">
+                        <EditText
+                            android:hint="聊聊"
+                            android:id="@+id/edit_chat_item"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@+id/publish_chat_item"
+                            android:layout_toLeftOf="@+id/publish_chat_item">
+
+                        </EditText>
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="发表"
+                            android:id="@+id/publish_chat_item"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentEnd="true"/>
+                    </RelativeLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </android.support.percent.PercentRelativeLayout>
+
+
+
+    </LinearLayout>
+</FrameLayout>

@@ -3,6 +3,8 @@ package com.example.powerbbs.base;
 import android.app.Application;
 import android.content.Context;
 
+import com.baidu.mapapi.SDKInitializer;
+
 import org.litepal.LitePal;
 
 /**
@@ -15,6 +17,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         LitePal.initialize(this);
+        SDKInitializer.initialize(this);
         context = getApplicationContext();
     }
 

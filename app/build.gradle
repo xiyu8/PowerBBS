@@ -16,6 +16,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
 }
 
 dependencies {
@@ -31,8 +37,6 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:26.1.0'
     compile 'com.android.support:design:26.1.0'
     compile 'com.android.support:cardview-v7:26.1.0'
-
-
 
     /* 其它第三方库 */
     implementation 'org.litepal.android:core:1.5.0'
@@ -50,6 +54,9 @@ dependencies {
     compile 'com.github.wangjiegulu:AndroidInject:1.0.6' //注解框架(CommunicationMainAct用到)
     compile 'com.github.wangjiegulu:AndroidBucket:1.0.4' //基础工具包
     compile 'com.github.wangjiegulu:RapidFloatingActionButton:1.0.3'
+
+
+    compile 'com.android.support:percent:26.1.0'
 
 
 }
