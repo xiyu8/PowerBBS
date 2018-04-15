@@ -72,7 +72,15 @@
             android:layout_height="0dp"
             android:orientation="vertical"
             android:layout_weight="1">
+            <!--group number area-->
+            <LinearLayout
+                android:id="@+id/group_number"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="#50ffffff">
 
+            </LinearLayout>
 
             <!--地图上 第一层覆盖：searchButton-->
             <LinearLayout

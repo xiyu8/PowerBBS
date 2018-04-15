@@ -1,7 +1,11 @@
 package com.example.powerbbs;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -13,6 +17,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.powerbbs.base.ActivityCollector;
 import com.example.powerbbs.base.BaseActivity;
 import com.example.powerbbs.home.CommunicationMainAct;
+import com.example.powerbbs.home.main_fragment.GroupFragment;
+import com.example.powerbbs.home.main_fragment.HomeFragment;
 import com.example.powerbbs.login.LoginActivity;
 
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
@@ -21,20 +27,35 @@ import static com.example.powerbbs.tackle.NetRequest.*;
 
 public class MainActivity extends BaseActivity {
 
+    FragmentManager fragmentManager;
+    HomeFragment homeFragment;
+    GroupFragment groupFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initViews();
+
+        fragmentManager = getFragmentManager();
+        setTabSelection(0);
     }
 
 
 
-    public ImageView userMainIcon;
-    public TextView drawername;
+    public ImageView userMainIcon,homeImage,groupImage;
+    public TextView drawername,homeText,groupText;
     public String app_url;
     public Button drawerlogin;
     public void initViews() {
+        ////////////checkout fragment views//////////////
+        homeImage = findViewById(R.id.home_image);
+        homeText = findViewById(R.id.home_text);
+        groupImage = findViewById(R.id.group_image);
+        groupText = findViewById(R.id.group_text);
+
+        /////////////////////////
+
         app_url = getResources().getString(R.string.app_url);
         drawername = findViewById(R.id.drawername);
         userMainIcon = (ImageView) findViewById(R.id.userMainIcon);
@@ -84,6 +105,14 @@ public class MainActivity extends BaseActivity {
 
             case R.id.finish:
                 ActivityCollector.finishAll();  break;
+                ////////////////////checkout fragment/////////////////////////////
+            case R.id.group:
+                setTabSelection(1);
+                break;
+            case R.id.in_home:
+                setTabSelection(0);
+                break;
+                ////////////////////////////////////////////////
             default: break;
         }
     }
@@ -187,6 +216,85 @@ public class MainActivity extends BaseActivity {
             ActivityCollector.finishAll();
         }
     }
+
+
+
+//////////////////////////////////////////////////about checkout fragment/////////////////////////////////////////////////////////////////////////////////
+
+
+    /**
+     * 根据传入的index参数来设置选中的tab页。
+     * @param index
+     *            每个tab页对应的下标。，1，2，3。
+     */
+    public void setTabSelection(int index) {
+        // 每次选中之前先清楚掉上次的选中状态
+
+        Log.e("OpenJCU", "$$$$$$$$$$$$$"+getLogin()+getUsername()+getPwd());
+        clearSelection();
+        // 开启一个Fragment事务
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        // 先隐藏掉所有的Fragment，以防止有多个Fragment显示在界面上的情况
+        hideFragments(transaction);
+        switch (index) {
+            case 0:
+                // 当点击了消息tab时，改变控件的图片和文字颜色
+                homeImage.setImageResource(R.drawable.icon);
+                homeText.setTextColor(Color.parseColor("#47c6fc"));
+                if (homeFragment == null) {
+                    // 如果homeFragment为空，则创建一个并添加到界面上
+                    homeFragment = new HomeFragment();
+                    transaction.add(R.id.content,homeFragment);
+                } else {
+                    // 如果homeFragment不为空，则直接将它显示出来
+                    transaction.show(homeFragment);
+                }
+                break;
+            case 1:
+                // 当点击了联系人tab时，改变控件的图片和文字颜色
+                groupImage.setImageResource(R.drawable.icon);
+                groupText.setTextColor(Color.parseColor("#47c6fc"));
+                if (groupFragment == null) {
+                    // 如果mapFragment为空，则创建一个并添加到界面上
+                    groupFragment = new GroupFragment();
+                    transaction.add(R.id.content, groupFragment);
+                } else {
+                    // 如果mapFragment不为空，则直接将它显示出来
+                    transaction.show(groupFragment);
+                }
+                break;
+            default:
+                break;
+        }
+        transaction.commit();
+    }
+
+    /**
+     * 清除掉所有的选中状态。
+     */
+    private void clearSelection() {
+        homeImage.setImageResource(R.drawable.icon);
+        homeText.setTextColor(Color.parseColor("#82858b"));
+        groupImage.setImageResource(R.drawable.icon);
+        groupText.setTextColor(Color.parseColor("#82858b"));
+    }
+
+    /**
+     * 将所有的Fragment都置为隐藏状态。
+     * @param transaction
+     *            用于对Fragment执行操作的事务
+     */
+    private void hideFragments(FragmentTransaction transaction) {
+        if (homeFragment != null) {
+            transaction.hide(homeFragment);
+        }
+        if (groupFragment != null) {
+            transaction.hide(groupFragment);
+        }
+    }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 
 }
